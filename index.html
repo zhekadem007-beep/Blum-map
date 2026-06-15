@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blum Pixel Map — Web3 Territory Platform</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="/static/style.css?v=1.2">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+
+    <div id="app">
+        <button id="toggle-sidebar"><i class="fa-solid fa-bars"></i></button>
+
+        <aside id="sidebar" class="hidden">
+            <div class="sidebar-content">
+                <div class="brand-title">BLUM PIXEL</div>
+                <hr class="separator">
+
+                <button class="menu-btn" id="graph-btn">
+                    <i class="fa-solid fa-chart-line"></i> Графік токена
+                </button>
+
+                <div class="info-box">
+                    <div class="info-row">
+                        <span class="info-label"><i class="fa-solid fa-bolt"></i> Coin Rate:</span>
+                        <span id="coin-rate" class="info-value">0.0246$</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label"><i class="fa-solid fa-earth-americas"></i> Масштаб:</span>
+                        <span class="info-value">10,000 × 10,000</span>
+                    </div>
+                </div>
+
+                <div class="sidebar-stats">
+                    <h4><i class="fa-solid fa-server"></i> Статус глобальної карти</h4>
+                    <div class="stat-item">
+                        <span>Захоплено блоків:</span>
+                        <span id="total-blocks-count" class="stat-num">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span>Активні лідери:</span>
+                        <span class="stat-num">1,402</span>
+                    </div>
+                    <div class="stat-item">
+                        <span>Мережа:</span>
+                        <span class="status-online"><i class="fa-solid fa-circle"></i> Mainnet</span>
+                    </div>
+                </div>
+
+                <div class="sidebar-footer">
+                    v1.4.0 • Secured Smart System
+                </div>
+            </div>
+        </aside>
+
+        <div id="canvas-container">
+            <canvas id="mapCanvas"></canvas>
+
+            <div id="pixel-info" class="pixel-info hidden">
+                <div class="info-header"><i class="fa-solid fa-circle-info"></i> Інформація про блок</div>
+                <div id="info-content"></div>
+            </div>
+        </div>
+
+        <aside id="right-sidebar">
+            <div class="user-profile">
+                <div class="avatar"><i class="fa-solid fa-user-shield"></i></div>
+                <div class="user-meta">
+                    <div class="username">Zheka</div>
+                    <div class="user-status">Verified Investor</div>
+                </div>
+            </div>
+
+            <div class="selection-info">
+                <h3>Захоплення території</h3>
+
+                <div class="input-group">
+                    <p class="coords-box">
+                        <i class="fa-solid fa-location-crosshairs"></i> Координати:
+                        <span id="coords" class="highlight">Не вибрано</span>
+                    </p>
+                </div>
+
+                <div class="input-group">
+                    <label for="pixel-color"><i class="fa-solid fa-palette"></i> Колір блоку</label>
+                    <div class="color-picker-wrapper">
+                        <input type="color" id="pixel-color" value="#007bff">
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="pixel-link"><i class="fa-solid fa-link"></i> Посилання (Реклама)</label>
+                    <input type="url" id="pixel-link" placeholder="https://t.me/your_channel">
+                </div>
+
+                <div class="price-box">
+                    <div class="price-label">Вартість операції</div>
+                    <div class="price-value"><span id="price">0</span> <span class="currency">$BLP</span></div>
+                </div>
+
+                <button id="buy-btn" class="disabled" disabled>
+                    <i class="fa-solid fa-vector-square"></i> ЗАХОПИТИ ТЕРИТОРІЮ
+                </button>
+            </div>
+
+            <div class="transaction-history">
+                <h4><i class="fa-solid fa-clock-rotate-left"></i> Твої останні транзакції</h4>
+                <div id="tx-list" class="tx-list">
+                    <div class="tx-empty">Історія операцій порожня</div>
+                </div>
+            </div>
+        </aside>
+
+        <div id="graph-modal" class="modal hidden">
+            <div class="modal-content">
+                <span id="close-graph" class="close-modal">&times;</span>
+                <h3>Аналітика ринку</h3>
+                <div class="chart-wrapper">
+                    <canvas id="cryptoChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/script.js?v=1.2"></script>
+</body>
+</html>
